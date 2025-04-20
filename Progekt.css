@@ -1,0 +1,446 @@
+/* Основной стиль */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f2f2f2;
+  color: #333;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  transition: background-color 0.5s ease-in-out;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: auto;
+  padding: 20px;
+}
+
+header {
+  background: linear-gradient(135deg, #0088cc, #6ab6ff);
+  color: white;
+  text-align: center;
+  padding: 40px 20px;
+  border-bottom: 5px solid #005f99;
+  position: relative;
+  z-index: 2;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 3em;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  animation: fadeInText 1s ease-in-out;
+}
+
+header p {
+  margin-top: 10px;
+  font-size: 1.2em;
+}
+
+/* Параллакс эффект фона */
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('https://via.placeholder.com/1920x1080') center center / cover no-repeat;
+  z-index: -1;
+  transform: translateY(0);
+  transition: transform 0.5s ease;
+}
+
+body.scrolled::before {
+  transform: translateY(-30%);
+}
+
+/* Стили карточек с анимацией */
+.projects {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 30px;
+  justify-content: center;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 280px;
+  background: white;
+  border-radius: 10px;
+  text-align: center;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  color: inherit;
+  transition: transform 0.2s ease, box-shadow 0.3s ease;
+  opacity: 0;
+  animation: scaleUp 0.5s forwards, fadeInCard 1s ease-in-out;
+  cursor: pointer;
+}
+
+.project-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.project-card img {
+  width: 60px;
+  height: 60px;
+  margin-bottom: 15px;
+  transition: transform 0.3s ease;
+}
+
+.project-card img:hover {
+  transform: rotate(360deg);
+}
+
+.project-card h2 {
+  font-size: 1.3em;
+  margin: 10px 0 5px;
+  color: #333;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.project-card p {
+  font-size: 0.95em;
+  color: #555;
+}
+
+.project-card button {
+  padding: 10px 20px;
+  background: linear-gradient(135deg, #00b4d8, #0077b6);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.project-card button:hover {
+  background: #00b4d8;
+  transform: translateY(-5px);
+}
+
+/* Анимации для карточек */
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes scaleUp {
+  0% { opacity: 0; transform: scale(0.8); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInCard {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Анимация для текста в шапке */
+@keyframes fadeInText {
+  0% { opacity: 0; transform: translateY(-20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Стиль футера */
+footer {
+  background: #111;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  border-top: 5px solid #0088cc;
+}
+
+/* Адаптация для мобильных устройств */
+@media screen and (max-width: 768px) {
+  header h1 {
+    font-size: 2em;
+  }
+
+  .project-card {
+    width: 45%;
+  }
+
+  .projects {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  header h1 {
+    font-size: 1.5em;
+  }
+
+  header p {
+    font-size: 1em;
+  }
+
+  .project-card {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .projects {
+    gap: 15px;
+  }
+}
+
+/* Светящийся эффект при наведении */
+.project-card:hover {
+  box-shadow: 0 0 15px rgba(0, 174, 255, 0.6), 0 0 30px rgba(0, 174, 255, 0.4);
+}
+
+/* Анимированная кнопка */
+.project-card button {
+  background: linear-gradient(270deg, #00b4d8, #0077b6, #00b4d8);
+  background-size: 600% 600%;
+  animation: btnGradient 5s ease infinite;
+}
+
+/* Анимация градиента */
+@keyframes btnGradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* Пульсирующий эффект на изображении */
+.project-card img {
+  animation: pulse 3s infinite;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Scroll-to-top */
+#scrollTop {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #0088cc;
+  color: #fff;
+  padding: 12px 16px;
+  border-radius: 50%;
+  cursor: pointer;
+  display: none;
+  z-index: 10;
+  box-shadow: 0 0 10px rgba(0, 136, 204, 0.5);
+  transition: background 0.3s ease;
+}
+
+#scrollTop:hover {
+  background: #005f99;
+}
+
+/* Тема: переключатель */
+.theme-toggle {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #fff;
+  color: #333;
+  border-radius: 50%;
+  padding: 10px;
+  cursor: pointer;
+  box-shadow: 0 0 10px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.theme-toggle:hover {
+  background: #0088cc;
+  color: #fff;
+}
+
+.dark-theme {
+  background: #121212;
+  color: #f2f2f2;
+}
+
+.dark-theme header {
+  background: linear-gradient(135deg, #222, #444);
+  border-bottom: 5px solid #000;
+}
+
+.dark-theme .project-card {
+  background: #1e1e1e;
+  box-shadow: 0 0 10px rgba(255,255,255,0.1);
+}
+
+.dark-theme .project-card button {
+  background: linear-gradient(270deg, #555, #333, #555);
+}
+
+.dark-theme footer {
+  background: #000;
+  border-top: 5px solid #444;
+}
+
+.dark-theme .theme-toggle {
+  background: #333;
+  color: #fff;
+}
+
+/* Темная тема — общее */
+.dark-theme {
+  background: radial-gradient(circle at top left, #1c1c1c, #111);
+  color: #f0f0f0;
+}
+
+/* Шапка в тёмной теме */
+.dark-theme header {
+  background: linear-gradient(135deg, #0d1b2a, #1b263b);
+  border-bottom: 4px solid #415a77;
+  box-shadow: 0 4px 20px rgba(0, 136, 204, 0.2);
+}
+
+.dark-theme header h1,
+.dark-theme header p {
+  color: #dce3e9;
+}
+
+/* Карточки */
+.dark-theme .project-card {
+  background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 0 12px rgba(0, 255, 255, 0.08);
+}
+
+.dark-theme .project-card:hover {
+  box-shadow: 0 0 20px rgba(0, 174, 255, 0.4), 0 0 30px rgba(0, 174, 255, 0.3);
+}
+
+/* Текст карточек */
+.dark-theme .project-card h2 {
+  color: #9be8ff;
+}
+
+.dark-theme .project-card p {
+  color: #cccccc;
+}
+
+/* Кнопка внутри карточки */
+.dark-theme .project-card button {
+  background: linear-gradient(135deg, #00b4d8, #3a0ca3);
+  color: white;
+  box-shadow: 0 0 10px rgba(0, 180, 216, 0.4);
+}
+
+.dark-theme .project-card button:hover {
+  background: linear-gradient(135deg, #00b4d8, #7209b7);
+}
+
+/* Футер */
+.dark-theme footer {
+  background: #0a0a0a;
+  color: #aaa;
+  border-top: 4px solid #333;
+  box-shadow: 0 -3px 15px rgba(255, 255, 255, 0.03);
+}
+
+/* Кнопка переключения темы */
+.dark-theme .theme-toggle {
+  background: #222;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(0, 180, 216, 0.2);
+}
+
+/* Scroll-to-top в тёмной теме */
+.dark-theme #scrollTop {
+  background: #3a0ca3;
+  box-shadow: 0 0 10px rgba(114, 9, 183, 0.4);
+}
+
+body, header, footer, .project-card, .theme-toggle, .project-card button {
+  transition: all 0.5s ease;
+}
+
+.dark-theme {
+  background: #0f0f0f;
+  background-image: 
+    radial-gradient(circle at 1px 1px, rgba(0, 174, 255, 0.1) 1px, transparent 0),
+    radial-gradient(circle at 1px 1px, rgba(0, 174, 255, 0.05) 1px, transparent 0);
+  background-size: 40px 40px;
+}
+
+с.theme-toggle {
+  animation: glowPulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes glowPulse {
+  0% {
+    box-shadow: 0 0 5px rgba(0, 174, 255, 0.2);
+  }
+  100% {
+    box-shadow: 0 0 15px rgba(0, 174, 255, 0.5);
+  }
+}
+
+.advertising-button {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.advertising-button a {
+  display: inline-block;
+  background: linear-gradient(135deg, #00b4d8, #0077b6);
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.2em;
+  text-decoration: none;
+  border-radius: 30px;
+  box-shadow: 0 4px 12px rgba(0, 174, 216, 0.3);
+  transition: all 0.3s ease;
+}
+
+.advertising-button a:hover {
+  background: linear-gradient(135deg, #0077b6, #00b4d8);
+  box-shadow: 0 6px 20px rgba(0, 174, 216, 0.5);
+  transform: translateY(-5px);
+}
+
+.advertising-button a:active {
+  transform: translateY(2px);
+  box-shadow: 0 4px 12px rgba(0, 174, 216, 0.4);
+}
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin-top: 30px;
+}
+
+nav ul li a {
+  display: inline-block;
+  padding: 12px 25px;
+  background: linear-gradient(135deg, #00b4d8, #0077b6);
+  color: white;
+  text-decoration: none;
+  border-radius: 30px;
+  font-weight: bold;
+  font-size: 1.1em;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 174, 255, 0.3);
+}
+
+nav ul li a:hover {
+  background: linear-gradient(135deg, #0096c7, #023e8a);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 174, 255, 0.4);
+}

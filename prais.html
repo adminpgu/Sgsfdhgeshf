@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Прайс | Мерч от «Подслушано в ПГУ»</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" type="image/png" href="https://cubi-block.ru/wp-content/uploads/2020/02/price-icon1.png">
+</head>
+<body class="prais-page">
+  <header>
+    <h1>Прайс на рекламу</h1>
+    <p>Telegram-каналы и стоимость размещения</p>
+
+    <nav>
+      <ul>
+        <li><a href="TG-proekt.html">Главная</a></li>
+      </ul>
+    </nav>
+
+    <!-- Переключатель темы -->
+    <div class="theme-toggle" onclick="toggleTheme()">
+      <span id="theme-icon">🌙</span>
+    </div>
+  </header>
+
+  <section class="price-list">
+    <table>
+      <thead>
+        <tr>
+          <th>Telegram канал</th>
+          <th>Цена</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><a href="https://t.me/sluhipgu" target="_blank">@sluhipgu</a></td>
+          <td>700 руб</td>
+        </tr>
+        <tr>
+          <td><a href="https://t.me/quotes_psu" target="_blank">@quotes_psu</a></td>
+          <td>500 руб</td>
+        </tr>
+        <tr>
+          <td><a href="https://t.me/quotes_student" target="_blank">@quotes_student</a></td>
+          <td>400 руб</td>
+        </tr>
+        <tr>
+          <td><a href="https://t.me/arbekovopnz58" target="_blank">@arbekovopnz58</a></td>
+          <td>700 руб</td>
+        </tr>
+        <tr>
+          <td><a href="https://t.me/zapadnayapolyana" target="_blank">@zapadnayapolyana</a></td>
+          <td>500 руб</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p class="note">* За актуальными ценами лучше написать админу, перейдя по кнопке ниже:</p>
+
+    <div class="advertising-button">
+      <a href="https://t.me/wmiks" target="_blank">Писать по рекламе</a>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Наши Telegram-проекты</p>
+  </footer>
+
+  <script>
+    const icon = document.getElementById("theme-icon");
+    const body = document.body;
+
+    function toggleTheme() {
+      body.classList.toggle("dark-theme");
+      const isDark = body.classList.contains("dark-theme");
+      icon.textContent = isDark ? "☀️" : "🌙";
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+    }
+
+    window.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") {
+        body.classList.add("dark-theme");
+        icon.textContent = "☀️";
+      }
+    });
+  </script>
+</body>
+</html>
